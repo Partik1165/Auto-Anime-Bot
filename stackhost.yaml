@@ -1,20 +1,21 @@
 user:
-  name: umeshsaini1215
-  github: partik1165
+  name: ishikki
+  github: ishikki-akabane
 
 language: "python"
 python_version: "3.10"
 
- commands:
+commands:
   build:
-    - "apt-get update && apt-get upgrade -y"
-    - "apt-get install git wget pv jq python3-dev mediainfo gcc libsm6 libxext6 libfontconfig1 libxrender1 libgl1-mesa-glx -y"
-    - "pip install --no-cache-dir -r requirements.txt"
+  docker:
+    worker: Dockerfile
   package:
     - "nano inxi"
-  start:
-    - "bash run.sh"
+ run:
+  worker: bash run.sh
 
 env:
-  - "ENVIRONMENT=production"
+  - "ENVIRONMENT=production"" 
+
+
 
