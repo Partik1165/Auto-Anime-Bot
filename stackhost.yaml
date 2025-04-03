@@ -5,22 +5,22 @@ user:
 language: "python"
 python_version: "3.10"
 
- command: ["bash", "run.sh"]
+  command: ["bash", "run.sh"]
     volumes:
-      - .:/usr/src/app
+      - ".:/usr/src/app"
     environment:
-      - PYTHONUNBUFFERED=1
+      - "PYTHONUNBUFFERED=1"
     build:
-      context: .
-      dockerfile: Dockerfile
+      context: "."
+      dockerfile: "Dockerfile"
     run:
       pre_install:
-        - apt-get update && apt-get upgrade -y
-        - apt-get install git wget pv jq python3-dev mediainfo gcc libsm6 libxext6 libfontconfig1 libxrender1 libgl1-mesa-glx -y
-        - pip3 install --no-cache-dir -r requirements.txt
+        - "apt-get update && apt-get upgrade -y"
+        - "apt-get install git wget pv jq python3-dev mediainfo gcc libsm6 libxext6 libfontconfig1 libxrender1 libgl1-mesa-glx -y"
+        - "pip3 install --no-cache-dir -r requirements.txt"
     copies:
-      - source: mwader/static-ffmpeg:6.1
-        target: /bin/ffmpeg
-      - source: mwader/static-ffmpeg:6.1
-        target: /bin/ffprobe
+      - source: "mwader/static-ffmpeg:6.1"
+        target: "/bin/ffmpeg"
+      - source: "mwader/static-ffmpeg:6.1"
+        target: "/bin/ffprobe"
 
